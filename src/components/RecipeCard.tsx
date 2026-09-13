@@ -59,38 +59,21 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         )}
 
         {/* Yield & Shelf Life */}
-        <div className="mt-2.5 space-y-1.5 text-xs text-stone-600">
-          <div className="flex items-center gap-1.5">
-            <Droplets className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-            <span>
-              Thành phẩm (1CT): <strong className="text-stone-900 font-bold">{recipe.yieldDisplay || `${recipe.yieldAmount} ${recipe.yieldUnit}`}</strong>
+        <div className="mt-3 p-2.5 bg-stone-50 rounded-xl border border-stone-200/80 space-y-1.5 text-xs text-stone-600">
+          <div className="flex items-center justify-between">
+            <span className="flex items-center gap-1.5">
+              <Droplets className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+              <span>Thành phẩm (1 CT):</span>
             </span>
+            <strong className="text-amber-900 font-bold">
+              {recipe.yieldDisplay || `${recipe.yieldAmount.toLocaleString('vi-VN')} ${recipe.yieldUnit}`}
+            </strong>
           </div>
-
-          {/* Quick 1CT / 3CT / 5CT tags */}
-          <div className="grid grid-cols-3 gap-1 pt-1 text-center text-[11px]">
-            <div className="bg-stone-50 py-1 px-1 rounded border border-stone-200">
-              <span className="text-stone-500 font-medium block">1CT</span>
-              <strong className="text-stone-800 truncate block">
-                {recipe.yieldDisplay || `${recipe.yieldAmount} ${recipe.yieldUnit}`}
-              </strong>
-            </div>
-            <div className="bg-amber-50/60 py-1 px-1 rounded border border-amber-200/60">
-              <span className="text-amber-700 font-medium block">3CT</span>
-              <strong className="text-amber-900 truncate block">
-                {recipe.yieldDisplay?.includes('-')
-                  ? recipe.yieldDisplay.replace(/1\.800\s*-\s*2\.000/g, '5.400 - 6.000')
-                  : `${(recipe.yieldAmount * 3).toLocaleString('vi-VN')} ${recipe.yieldUnit}`}
-              </strong>
-            </div>
-            <div className="bg-orange-50/60 py-1 px-1 rounded border border-orange-200/60">
-              <span className="text-orange-700 font-medium block">5CT</span>
-              <strong className="text-orange-900 truncate block">
-                {recipe.yieldDisplay?.includes('-')
-                  ? recipe.yieldDisplay.replace(/1\.800\s*-\s*2\.000/g, '9.000 - 10.000')
-                  : `${(recipe.yieldAmount * 5).toLocaleString('vi-VN')} ${recipe.yieldUnit}`}
-              </strong>
-            </div>
+          <div className="text-[11px] text-stone-500 flex items-center justify-between border-t border-stone-200/60 pt-1">
+            <span>Hạn dùng: {recipe.shelfLife}</span>
+            <span className="text-amber-700 font-semibold bg-amber-100/70 px-2 py-0.5 rounded-full">
+              Hỗ trợ 0.5x • 2x • 3x
+            </span>
           </div>
         </div>
 
