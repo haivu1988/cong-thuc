@@ -1,0 +1,6 @@
+{
+  "name": "Quản Lý Công Thức Pha Chế",
+  "description": "Ứng dụng tra cứu và quản lý công thức pha chế nền và topping cho nhân viên và quản lý.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
